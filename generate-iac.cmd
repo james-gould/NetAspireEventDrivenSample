@@ -1,0 +1,1 @@
+azd config set alpha.infraSynth on & azd infra synth
