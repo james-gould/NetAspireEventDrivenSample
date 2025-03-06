@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "ProjectBase_QueueConsumer": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7156",
+      "launchBrowser": false
+    }
+  }
+}

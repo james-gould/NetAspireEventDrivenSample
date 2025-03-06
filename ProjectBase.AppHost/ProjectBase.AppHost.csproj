@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>716954cf-a286-4ba8-be82-f792c93bd569</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.Azure.ApplicationInsights" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.Azure.Functions" Version="9.1.0-preview.1.25121.10" />
+    <PackageReference Include="Aspire.Hosting.Azure.KeyVault" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.Azure.ServiceBus" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.Azure.Storage" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="9.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectBase.Api\ProjectBase.Api.csproj" />
+    <ProjectReference Include="..\ProjectBase.Data\ProjectBase.Data.csproj" />
+    <ProjectReference Include="..\ProjectBase.MigrationsService\ProjectBase.MigrationsService.csproj" />
+    <ProjectReference Include="..\ProjectBase.QueueConsumer\ProjectBase_QueueConsumer.csproj" />
+  </ItemGroup>
+
+</Project>
