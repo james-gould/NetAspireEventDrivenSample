@@ -34,7 +34,9 @@ Add the following to the `AppHost` User Secrets:
 }
 ```
 
-You will also need to have a container host running, either [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/)
+You will also need to have a container host running, either [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/).
+
+Run `createMigrations.ps1` to create an initial snapshot of the `ProjectBase.Data.DbContext` - this is required on first launch!
 
 # Launch
 
