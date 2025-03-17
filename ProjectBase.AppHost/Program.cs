@@ -4,7 +4,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 builder.AddAzureProvisioning();
 
-var sql = builder.AddSqlServer("sql").WithLifetime(ContainerLifetime.Persistent);
+var sql = builder.AddSqlServer("sql").WithLifetime(ContainerLifetime.Session);
 
 var db = sql.AddDatabase("testingDb");
 
