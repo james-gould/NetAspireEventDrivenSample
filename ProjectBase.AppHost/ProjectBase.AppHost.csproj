@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectBase.Api\ProjectBase.Api.csproj" />
-    <ProjectReference Include="..\ProjectBase.Data\ProjectBase.Data.csproj" />
     <ProjectReference Include="..\ProjectBase.MigrationsService\ProjectBase.MigrationsService.csproj" />
     <ProjectReference Include="..\ProjectBase.QueueConsumer\ProjectBase_QueueConsumer.csproj" />
   </ItemGroup>

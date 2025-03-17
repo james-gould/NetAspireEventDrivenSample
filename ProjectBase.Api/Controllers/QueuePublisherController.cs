@@ -7,12 +7,12 @@ namespace ProjectBase.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class QueuePublisherController : ControllerBase
     {
         private ServiceBusClient _client;
         private ProjectDbContext _context;
 
-        public WeatherForecastController(ServiceBusClient client, ProjectDbContext context)
+        public QueuePublisherController(ServiceBusClient client, ProjectDbContext context)
         {
             _client = client;
             _context = context;
@@ -23,20 +23,8 @@ namespace ProjectBase.Api.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
-
-        [HttpGet("PublishWeatherItem")]
-        public async Task PublicWeatherItemAsync()
+        [HttpGet("PublishItemToServiceBus")]
+        public async Task PublishItemToServiceBusAsync()
         {
             var newItem = new WeatherItem { Reading = Summaries[Random.Shared.Next(Summaries.Length)] };
             _context.WeatherItems.Add(newItem);
