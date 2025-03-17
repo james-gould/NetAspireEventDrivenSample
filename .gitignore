@@ -369,3 +369,4 @@ FodyWeavers.xsd
 */azure.yaml
 /infra
 /azure.yaml
+/ProjectBase.Data/Migrations/*
