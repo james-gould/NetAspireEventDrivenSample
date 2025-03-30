@@ -1,5 +1,6 @@
 using Azure.Messaging.ServiceBus;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProjectBase.Data;
 using ProjectBase.Data.Models;
 
@@ -26,14 +27,23 @@ namespace ProjectBase.Api.Controllers
         [HttpGet("PublishItemToServiceBus")]
         public async Task PublishItemToServiceBusAsync()
         {
-            var newItem = new WeatherItem { Reading = Summaries[Random.Shared.Next(Summaries.Length)] };
-            _context.WeatherItems.Add(newItem);
+            var forecast = Summaries[Random.Shared.Next(Summaries.Length)];
+
+            var city = await _context.Cities.FirstAsync();
+
+            var weatherForecast = new WeatherItem
+            {
+                Reading = forecast,
+                City = city
+            };
+
+            _context.WeatherItems.Add(weatherForecast);
 
             await _context.SaveChangesAsync();
 
             var sender = _client.CreateSender("consumer");
 
-            var msg = new ServiceBusMessage(newItem.Id.ToString());
+            var msg = new ServiceBusMessage(weatherForecast.WeatherItemId.ToString());
 
             await sender.SendMessageAsync(msg);
         }

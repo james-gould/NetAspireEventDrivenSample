@@ -67,9 +67,15 @@ namespace ProjectBase.MigrationsService
 
         private static async Task SeedDataAsync(ProjectDbContext dbContext, CancellationToken cancellationToken)
         {
+            var city = new City
+            {
+                CityName = "London"
+            };
+
             var weatherItem = new WeatherItem
             {
-                Reading = "Stormy"
+                Reading = "Stormy",
+                City = city
             };
 
             var strategy = dbContext.Database.CreateExecutionStrategy();
@@ -77,10 +83,16 @@ namespace ProjectBase.MigrationsService
             {
                 // Seed the database
                 await using var transaction = await dbContext.Database.BeginTransactionAsync(cancellationToken);
+
                 await dbContext.WeatherItems.AddAsync(weatherItem, cancellationToken);
+                await dbContext.Cities.AddAsync(city, cancellationToken);
                 await dbContext.SaveChangesAsync(cancellationToken);
+
                 await transaction.CommitAsync(cancellationToken);
             });
+
+            // if this throws, something broke!
+            await dbContext.Cities.SingleAsync(x => x.CityName == city.CityName);
         }
     }
 }

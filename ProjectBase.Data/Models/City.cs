@@ -8,18 +8,14 @@ using System.Threading.Tasks;
 
 namespace ProjectBase.Data.Models
 {
-    public class WeatherItem
+    public class City
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int WeatherItemId { get; set; }
-
-        public string Reading { get; set; } = string.Empty;
-
-        public DateTimeOffset GeneratedAt => DateTimeOffset.UtcNow;
-
         public int CityId { get; set; }
 
-        public virtual City City { get; set; } = new();
+        public string CityName { get; set; } = string.Empty;
+
+        public virtual ICollection<WeatherItem> Forecasts { get; set; } = [];
     }
 }

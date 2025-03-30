@@ -11,12 +11,20 @@ namespace ProjectBase.Data
     public class ProjectDbContext(DbContextOptions options) : DbContext(options)
     {
         public virtual DbSet<WeatherItem> WeatherItems { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<WeatherItem>(entity =>
             {
-                entity.HasKey(x => x.Id);
+                entity.HasKey(x => x.WeatherItemId);
+
+                entity.HasOne(x => x.City).WithMany(x => x.Forecasts).HasForeignKey(e => e.CityId);
+            });
+
+            modelBuilder.Entity<City>(entity =>
+            {
+                entity.HasKey(x => x.CityId);
             });
         }
     }

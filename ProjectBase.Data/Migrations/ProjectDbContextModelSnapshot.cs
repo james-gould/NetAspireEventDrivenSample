@@ -21,21 +21,59 @@ namespace ProjectBase.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ProjectBase.Data.Models.WeatherItem", b =>
+            modelBuilder.Entity("ProjectBase.Data.Models.City", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CityId"));
+
+                    b.Property<string>("CityName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CityId");
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("ProjectBase.Data.Models.WeatherItem", b =>
+                {
+                    b.Property<int>("WeatherItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WeatherItemId"));
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Reading")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("WeatherItemId");
+
+                    b.HasIndex("CityId");
 
                     b.ToTable("WeatherItems");
+                });
+
+            modelBuilder.Entity("ProjectBase.Data.Models.WeatherItem", b =>
+                {
+                    b.HasOne("ProjectBase.Data.Models.City", "City")
+                        .WithMany("Forecasts")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+                });
+
+            modelBuilder.Entity("ProjectBase.Data.Models.City", b =>
+                {
+                    b.Navigation("Forecasts");
                 });
 #pragma warning restore 612, 618
         }

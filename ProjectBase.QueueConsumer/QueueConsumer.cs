@@ -25,13 +25,18 @@ namespace ProjectBase_QueueConsumer
             ServiceBusReceivedMessage message,
             ServiceBusMessageActions messageActions)
         {
-            _logger.LogInformation("Message ID: {id}", message.MessageId);
-            _logger.LogInformation("Message Body: {body}", message.Body);
-            _logger.LogInformation("Message Content-Type: {contentType}", message.ContentType);
+            var weatherItemId = int.Parse(message.Body.ToString());
+            var weatherItem = await _context.WeatherItems
+                .Include(e => e.City)
+                .FirstOrDefaultAsync(x => x.WeatherItemId == weatherItemId);
 
-            var fromDb = await _context.WeatherItems.FirstOrDefaultAsync(x => x.Id == int.Parse(message.Body.ToString()));
+            if (weatherItem is null)
+            {
+                _logger.LogError($"WeatherItem was null!");
+                return;
+            }
 
-            _logger.LogInformation($"Id from database: {fromDb?.GeneratedAt}");
+            _logger.LogInformation($"The forecast is {weatherItem.Reading} in {weatherItem.City.CityName} at {weatherItem.GeneratedAt}");
 
             // Complete the message
             await messageActions.CompleteMessageAsync(message);

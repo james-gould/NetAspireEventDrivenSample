@@ -3,6 +3,8 @@ using ProjectBase.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -16,8 +18,6 @@ builder.AddAzureServiceBusClient("projectBus");
 var str = builder.Configuration.GetConnectionString("testingDb");
 
 builder.Services.AddDbContext<ProjectDbContext>(opt => opt.UseSqlServer(str));
-
-builder.AddServiceDefaults();
 
 var app = builder.Build();
 
