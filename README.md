@@ -2,6 +2,14 @@
 
 This is a fully fledged sample application hooking up a .NET 8 WebAPI to an Azure Function App via a Service Bus, all hosted via .NET Aspire.
 
+Included:
+
+- SQL Server
+  - Database
+- Azure Service Bus (emulated)
+- Web API
+- Azure Function App (Queue Trigger)
+
 # Why?
 
 Building distributed applications is hard, and often annoying. Needing to check several sources of information to validate a request has completed an E2E journey is tedious at best, .NET Aspire has solved this.
