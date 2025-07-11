@@ -16,35 +16,7 @@ Building distributed applications is hard, and often annoying. Needing to check 
 
 # Getting Started
 
-Clone the application down and ensure you have `User Secrets` enabled, then add the following secrets to `ProjectBase.QueueConsumer` and `ProjectBase.Api`:
-
-```
-{
-  "ConnectionStrings": {
-    "projectVault": "",
-    "testingDb": ""
-  }
-}
-```
-
-We also need to configure the `ProjectBase.AppHost` project to verify our Azure subscription, although it will **not** be used.
-
-Add the following to the `AppHost` User Secrets:
-
-```
-{
-  "Azure": {
-    "SubscriptionId": "<Your subscription id>",
-    "AllowResourceGroupCreation": true,
-    "ResourceGroup": "<Valid resource group name>",
-    "Location": "<Valid Azure location>"
-  }
-}
-```
-
-You will also need to have a container host running, either [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/).
-
-Run `createMigrations.ps1` to create an initial snapshot of the `ProjectBase.Data.DbContext` - this is required on first launch!
+Clone the application down ensure you have a container host running, either [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/).
 
 # Launch
 
