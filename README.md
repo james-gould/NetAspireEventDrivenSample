@@ -9,7 +9,7 @@ Included:
   - Migration Service, applying database schema via Entity Framework Core
 - Azure Service Bus (emulated)
 - Web API
-- Azure Function App (Queue Trigger)
+- Azure Function App (Service Bus Trigger)
 
 # Why?
 
