@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBase.ServiceDefaults
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBase.Api", "ProjectBase.Api\ProjectBase.Api.csproj", "{6C72150A-87FD-4DC4-832F-A107655641CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBase_QueueConsumer", "ProjectBase.QueueConsumer\ProjectBase_QueueConsumer.csproj", "{D5ED0F12-5EE3-489E-87E0-C6782645708F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBase.QueueConsumer", "ProjectBase.QueueConsumer\ProjectBase.QueueConsumer.csproj", "{D5ED0F12-5EE3-489E-87E0-C6782645708F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBase.Data", "ProjectBase.Data\ProjectBase.Data.csproj", "{04DD1FFD-C067-4162-8C99-2FD70BB8EF9C}"
 EndProject

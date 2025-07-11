@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ProjectBase.Data;
 
-namespace ProjectBase_QueueConsumer
+namespace ProjectBase.QueueConsumer
 {
     public class QueueConsumer
     {
@@ -26,6 +26,7 @@ namespace ProjectBase_QueueConsumer
             ServiceBusMessageActions messageActions)
         {
             var weatherItemId = int.Parse(message.Body.ToString());
+
             var weatherItem = await _context.WeatherItems
                 .Include(e => e.City)
                 .FirstOrDefaultAsync(x => x.WeatherItemId == weatherItemId);

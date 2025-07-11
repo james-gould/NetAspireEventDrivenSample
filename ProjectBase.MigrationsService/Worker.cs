@@ -56,6 +56,7 @@ namespace ProjectBase.MigrationsService
         private static async Task RunMigrationAsync(ProjectDbContext dbContext, CancellationToken cancellationToken)
         {
             var strategy = dbContext.Database.CreateExecutionStrategy();
+            
             await strategy.ExecuteAsync(async () =>
             {
                 // Run migration in a transaction to avoid partial migration if it fails.
@@ -79,6 +80,7 @@ namespace ProjectBase.MigrationsService
             };
 
             var strategy = dbContext.Database.CreateExecutionStrategy();
+
             await strategy.ExecuteAsync(async () =>
             {
                 // Seed the database
