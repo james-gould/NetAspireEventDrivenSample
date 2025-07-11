@@ -6,7 +6,7 @@ Included:
 
 - SQL Server
   - Database
-- Migration Service, applying database schema once available via Entity Framework Core
+  - Migration Service, applying database schema via Entity Framework Core
 - Azure Service Bus (emulated)
 - Web API
 - Azure Function App (Queue Trigger)
