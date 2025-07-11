@@ -4,8 +4,8 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 var db = builder
     .AddSqlServer("sql")
-    //.WithLifetime(ContainerLifetime.Session)
-    .WithLifetime(ContainerLifetime.Persistent)
+    .WithLifetime(ContainerLifetime.Session)
+    //.WithLifetime(ContainerLifetime.Persistent)
     .AddDatabase("testingDb");
 
 var storage = builder.AddAzureStorage("projectStorage").RunAsEmulator();
