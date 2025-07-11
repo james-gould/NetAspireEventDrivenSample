@@ -1,6 +1,6 @@
 # Introduction
 
-This is a fully fledged sample application hooking up a .NET 8 WebAPI to an Azure Function App via a Service Bus, all hosted via .NET Aspire.
+This is a fully fledged sample application hooking up a .NET 8 WebAPI to an Azure Function App via a Service Bus, reading and writing data from SQL Server all hosted via .NET Aspire.
 
 Included:
 
